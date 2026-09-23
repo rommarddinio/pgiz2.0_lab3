@@ -48,7 +48,6 @@ public class RhythmGame : MonoBehaviour
     RectTransform progressFill;
 
     AudioSource src;
-    AudioClip generated;
     readonly List<Note> notes = new List<Note>();
     readonly List<Note> active = new List<Note>();
     int spawnIdx;
@@ -103,13 +102,8 @@ public class RhythmGame : MonoBehaviour
         song = s; diff = d; onFinish = finishCb; onAbort = abortCb;
 
         AudioClip clip = s.clip;
+        s.bpm = AudioBPMDetector.AnalyzeBPM(clip); 
         float offset = s.firstBeatOffset;
-        if (clip == null)
-        {
-            generated = SynthMusic.Create(s.title, s.bpm, 45f, songIndex + 7);
-            clip = generated;
-            offset = 0f;
-        }
 
         var data = ChartGenerator.Generate(s.bpm, offset, clip.length, d, songIndex * 10 + (int)d + 1);
         notes.Clear(); active.Clear();
@@ -138,7 +132,6 @@ public class RhythmGame : MonoBehaviour
         if (src != null) src.Stop();
         foreach (var n in active) if (n.rt != null) Destroy(n.rt.gameObject);
         active.Clear();
-        if (generated != null) { Destroy(generated); generated = null; }
     }
 
     void Finish()

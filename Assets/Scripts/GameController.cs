@@ -33,7 +33,6 @@ public class GameController : MonoBehaviour
 
     void Awake()
     {
-        EnsureSongs();
         BuildCanvas();
         BuildMenu();
         BuildSelect();
@@ -42,19 +41,6 @@ public class GameController : MonoBehaviour
         BuildResults();
         allPanels = new[] { menuP, selectP, recordsP, gameP, resultsP };
         Show(menuP);
-    }
-
-    void EnsureSongs()
-    {
-        if (songs == null || songs.Length == 0)
-        {
-            songs = new[]
-            {
-                new SongInfo { title = "Neon Pulse", bpm = 100f },
-                new SongInfo { title = "Cyber Drive", bpm = 128f },
-                new SongInfo { title = "Rush Hour", bpm = 150f }
-            };
-        }
     }
 
     void BuildCanvas()
@@ -116,7 +102,7 @@ public class GameController : MonoBehaviour
         {
             int idx = i;
             songBtns[i] = UIFactory.MakeButton(selectP,
-                songs[i].title + "   (" + songs[i].bpm.ToString("0") + " BPM)",
+                songs[i].title,
                 new Vector2(0, 270 - i * 95), new Vector2(760, 80),
                 () => { songIdx = idx; RefreshSelect(); });
         }

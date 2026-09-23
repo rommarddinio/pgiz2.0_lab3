@@ -243,15 +243,15 @@ MonoBehaviour:
   songs:
   - title: The Sign - Ace of Base
     clip: {fileID: 8300000, guid: 8e2cdaed509d9114eb43b4480e4f06a0, type: 3}
-    bpm: 97
+    bpm: 0
     firstBeatOffset: 0.5
   - title: SOS - ABBA
     clip: {fileID: 8300000, guid: f6bfc30269489db408dd36a1a9b163a3, type: 3}
-    bpm: 125
+    bpm: 0
     firstBeatOffset: 0.35
   - title: Be My Baby - The Ronettes
     clip: {fileID: 8300000, guid: b6152bbcc6ae15f41b374cf14678aa2e, type: 3}
-    bpm: 129
+    bpm: 0
     firstBeatOffset: 0.15
 --- !u!4 &936026743
 Transform:

@@ -8,7 +8,8 @@ public enum Difficulty { Easy, Normal, Hard }
 public class SongInfo
 {
     public string title = "Песня";
-    public AudioClip clip;            
+    public AudioClip clip;
+    [HideInInspector]            
     public float bpm = 120f;          
     public float firstBeatOffset = 0f;
 }
